@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.2 — 2026-11-25
+
+- **Fixed:** on some Windows set-ups the buttons at the bottom (Undo, Clear, Write automation)
+  were pushed out of the window. They now always stay in view; if the window is small, the
+  middle scrolls instead.
+- **Stepped parameters are flagged:** when the target is a switch or a stepped plug-in control
+  (like a Pultec's frequency selector), a note says how many positions it has, so the curve
+  jumping between them is no surprise.
+
+## 1.0.1 — 2026-11-25
+
+- A short getting-started guide: the first time it opens it asks for your language, then walks
+  you through the window in it. The **Guide** button brings it back.
+
 ## 1.0.0 — 2026-11-24
 
 - First release: tempo-synced LFOs and shapes written as automation on the selected track.

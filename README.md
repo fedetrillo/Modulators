@@ -38,6 +38,9 @@ can still see and edit.
 2. In **Modulators**, pick the parameter, the shape, the rate and the range.
 3. Press **Write automation**. The track is set to read automation so you hear it straight away.
 
+The first time it opens, it asks for your language and then a short guide walks you through the
+window in it; the **Guide** button brings it back whenever you need it.
+
 ## Support
 
 If something does not work as expected, Alt-click the version number at the top of the window:
