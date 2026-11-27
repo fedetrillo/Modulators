@@ -1,26 +1,26 @@
 {
-    "package_name": "Modulators",
-    "id": "com.fedetrillo.modulators",
-    "title": "Modulators",
-    "name": "Modulators",
-    "version": "1.0.2",
-    "manufacturer": "Fede Trillo",
-    "contact": "fedetrillo@gmail.com",
-    "description": "Tempo-synced movement for anything in LUNA. Sine, ramp, S&H, pump and more on volume, pan, sends or any plug-in parameter, written as normal automation you can still edit. See the curve over your bars before you write it. Getting-started guide, 7 languages.",
-    "categories": [
-        "Mixing & Mastering",
-        "Create"
-    ],
-    "icon": "icon.png",
-    "sdk_version": "3.1.2",
-    "min_luna_version": "3.1.2",
-    "engines": [
-        "luna"
-    ],
-    "html": "index.html",
-    "target": "window",
-    "floating": true,
-    "show_with_session": true,
-    "width": 900,
-    "height": 520
+  "package_name": "Modulators",
+  "id": "com.fedetrillo.modulators",
+  "title": "Modulators",
+  "name": "Modulators",
+  "version": "1.0.4",
+  "manufacturer": "Fede Trillo",
+  "contact": "fedetrillo@gmail.com",
+  "description": "Tempo-synced movement for anything in LUNA. Sine, ramp, S&H, pump and more on volume, pan, sends or any plug-in parameter, written as normal automation you can still edit. See the curve over your bars before you write it. Getting-started guide, 7 languages.",
+  "categories": [
+    "Mixing & Mastering",
+    "Create"
+  ],
+  "icon": "icon.png",
+  "sdk_version": "3.1.2",
+  "min_luna_version": "3.1.2",
+  "engines": [
+    "luna"
+  ],
+  "html": "index.html",
+  "target": "window",
+  "floating": true,
+  "show_with_session": true,
+  "width": 900,
+  "height": 520
 }

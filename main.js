@@ -7,30 +7,30 @@
 
 (() => {
   const $ = (id) => document.getElementById(id);
-  const VERSION = '1.0.2';
+  const VERSION = '1.0.4';
   const KEY = 'com.fedetrillo.modulators.';
   const store = {
     get: (k) => { try { return JSON.parse(localStorage.getItem(KEY + k)); } catch { return null; } },
     set: (k, v) => { try { localStorage.setItem(KEY + k, JSON.stringify(v)); } catch { /* not fatal */ } },
   };
   const I18N = {
-    es: { _name: 'Español', target: 'Destino:', noTrack: 'Selecciona una pista en LUNA', modulated: 'Modulados', search: 'Buscar parámetro…', mix: 'Mezcla', volume: 'Volumen', pan: 'Panorama', panStereo: 'Panorama (estéreo, mantiene la anchura)', panL: 'Pan izquierdo', panR: 'Pan derecho', mute: 'Mute (arriba suena, abajo silencio)', sends: 'Envíos', sendN: 'Envío {n}', span: 'Dónde', spanSel: 'Selección / bucle', bars1: '1 comp.', bars2: '2', bars4: '4', bars8: '8',
+    es: { instrument: 'instrumento', _name: 'Español', target: 'Destino:', noTrack: 'Selecciona una pista en LUNA', modulated: 'Modulados', search: 'Buscar parámetro…', mix: 'Mezcla', volume: 'Volumen', pan: 'Panorama', panStereo: 'Panorama (estéreo, mantiene la anchura)', panL: 'Pan izquierdo', panR: 'Pan derecho', mute: 'Mute (arriba suena, abajo silencio)', sends: 'Envíos', sendN: 'Envío {n}', span: 'Dónde', spanSel: 'Selección / bucle', bars1: '1 comp.', bars2: '2', bars4: '4', bars8: '8',
       spanInfo: '{from} → {to}', fromCursor: '(desde el cursor)', shape: 'Forma', rate: 'Velocidad', feelN: 'Normal', feelT: 'Tresillo', feelD: 'Puntillo',
       sine: 'Seno', triangle: 'Triángulo', square: 'Cuadrada', sawUp: 'Rampa ↑', sawDown: 'Rampa ↓', random: 'Aleatoria', sh: 'S&H', pump: 'Bombeo',
       kMin: 'Mínimo', kMax: 'Máximo', kPhase: 'Fase', kSmooth: 'Suavizado', dice: 'Sorpréndeme', write: 'Escribir automatización', clear: 'Borrar en el rango', undo: 'Deshacer',
       written: '{n} puntos escritos en {p}', cleared: 'Automatización borrada en el rango', undone: 'Deshecho', measuring: 'Midiendo el parámetro…', writing: 'Escribiendo…', failed: 'Error: {e}', noParam: 'Elige un parámetro',
       modeRead: 'He puesto la pista en modo de automatización «read» para que suene.', waiting: 'Esperando a LUNA…', noSession: 'Abre una sesión en LUNA.', report: 'Informe copiado', dark: 'Oscuro', grey: 'Gris', bars: 'comp.' },
-    en: { _name: 'English', target: 'Target:', noTrack: 'Select a track in LUNA', modulated: 'Modulated', search: 'Search parameters…', mix: 'Mixer', volume: 'Volume', pan: 'Pan', panStereo: 'Pan (stereo, keeps the width)', panL: 'Pan left', panR: 'Pan right', mute: 'Mute (high plays, low mutes)', sends: 'Sends', sendN: 'Send {n}', span: 'Where', spanSel: 'Selection / loop', bars1: '1 bar', bars2: '2', bars4: '4', bars8: '8',
+    en: { instrument: 'instrument', _name: 'English', target: 'Target:', noTrack: 'Select a track in LUNA', modulated: 'Modulated', search: 'Search parameters…', mix: 'Mixer', volume: 'Volume', pan: 'Pan', panStereo: 'Pan (stereo, keeps the width)', panL: 'Pan left', panR: 'Pan right', mute: 'Mute (high plays, low mutes)', sends: 'Sends', sendN: 'Send {n}', span: 'Where', spanSel: 'Selection / loop', bars1: '1 bar', bars2: '2', bars4: '4', bars8: '8',
       spanInfo: '{from} → {to}', fromCursor: '(from the cursor)', shape: 'Shape', rate: 'Rate', feelN: 'Straight', feelT: 'Triplet', feelD: 'Dotted',
       sine: 'Sine', triangle: 'Triangle', square: 'Square', sawUp: 'Ramp ↑', sawDown: 'Ramp ↓', random: 'Random', sh: 'S&H', pump: 'Pump',
       kMin: 'Minimum', kMax: 'Maximum', kPhase: 'Phase', kSmooth: 'Smooth', dice: 'Surprise me', write: 'Write automation', clear: 'Clear in range', undo: 'Undo',
       written: '{n} points written to {p}', cleared: 'Automation cleared in the range', undone: 'Undone', measuring: 'Measuring the parameter…', writing: 'Writing…', failed: 'Error: {e}', noParam: 'Pick a parameter',
       modeRead: 'I set the track to "read" automation so you hear it.', waiting: 'Waiting for LUNA…', noSession: 'Open a session in LUNA.', report: 'Report copied', dark: 'Dark', grey: 'Grey', bars: 'bars' },
-    ca: {"_name": "Català", "target": "Destí:", "noTrack": "Selecciona una pista a LUNA", "modulated": "Modulats", "search": "Cerca un paràmetre…", "mix": "Mescla", "volume": "Volum", "pan": "Panorama", "panStereo": "Panorama (estèreo, manté l’amplada)", "panL": "Pan esquerre", "panR": "Pan dret", "mute": "Mute (dalt sona, baix silenci)", "sends": "Enviaments", "sendN": "Enviament {n}", "span": "On", "spanSel": "Selecció / bucle", "bars1": "1 comp.", "fromCursor": "(des del cursor)", "shape": "Forma", "rate": "Velocitat", "feelN": "Normal", "feelT": "Treset", "feelD": "Amb punt", "sine": "Sinus", "triangle": "Triangle", "square": "Quadrada", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Aleatòria", "sh": "S&H", "pump": "Bombeig", "kMin": "Mínim", "kMax": "Màxim", "kPhase": "Fase", "kSmooth": "Suavitzat", "dice": "Sorprèn-me", "write": "Escriu l’automatització", "clear": "Esborra al rang", "undo": "Desfés", "written": "{n} punts escrits a {p}", "cleared": "Automatització esborrada al rang", "undone": "Desfet", "measuring": "Mesurant el paràmetre…", "writing": "Escrivint…", "failed": "Error: {e}", "noParam": "Tria un paràmetre", "modeRead": "He posat la pista en mode d’automatització «read» perquè soni.", "waiting": "Esperant LUNA…", "noSession": "Obre una sessió a LUNA.", "report": "Informe copiat", "dark": "Fosc", "grey": "Gris", "bars": "comp."},
-    fr: {"_name": "Français", "target": "Cible :", "noTrack": "Sélectionnez une piste dans LUNA", "modulated": "Modulés", "search": "Rechercher un paramètre…", "mix": "Mixage", "volume": "Volume", "pan": "Panoramique", "panStereo": "Panoramique (stéréo, garde la largeur)", "panL": "Pan gauche", "panR": "Pan droit", "mute": "Mute (haut : joue, bas : coupé)", "sends": "Départs", "sendN": "Départ {n}", "span": "Où", "spanSel": "Sélection / boucle", "bars1": "1 mesure", "fromCursor": "(depuis le curseur)", "shape": "Forme", "rate": "Vitesse", "feelN": "Normal", "feelT": "Triolet", "feelD": "Pointé", "sine": "Sinus", "triangle": "Triangle", "square": "Carré", "sawUp": "Rampe ↑", "sawDown": "Rampe ↓", "random": "Aléatoire", "sh": "S&H", "pump": "Pompage", "kMin": "Minimum", "kMax": "Maximum", "kPhase": "Phase", "kSmooth": "Lissage", "dice": "Surprends-moi", "write": "Écrire l’automation", "clear": "Effacer dans la zone", "undo": "Annuler", "written": "{n} points écrits sur {p}", "cleared": "Automation effacée dans la zone", "undone": "Annulé", "measuring": "Mesure du paramètre…", "writing": "Écriture…", "failed": "Erreur : {e}", "noParam": "Choisissez un paramètre", "modeRead": "J’ai mis la piste en automation « read » pour l’entendre.", "waiting": "En attente de LUNA…", "noSession": "Ouvrez une session dans LUNA.", "report": "Rapport copié", "dark": "Sombre", "grey": "Gris", "bars": "mesures"},
-    de: {"_name": "Deutsch", "target": "Ziel:", "noTrack": "Wähle eine Spur in LUNA", "modulated": "Moduliert", "search": "Parameter suchen…", "mix": "Mixer", "volume": "Lautstärke", "pan": "Panorama", "panStereo": "Panorama (Stereo, behält die Breite)", "panL": "Pan links", "panR": "Pan rechts", "mute": "Mute (oben spielt, unten stumm)", "sends": "Sends", "sendN": "Send {n}", "span": "Wo", "spanSel": "Auswahl / Loop", "bars1": "1 Takt", "fromCursor": "(ab dem Cursor)", "shape": "Form", "rate": "Rate", "feelN": "Gerade", "feelT": "Triole", "feelD": "Punktiert", "sine": "Sinus", "triangle": "Dreieck", "square": "Rechteck", "sawUp": "Rampe ↑", "sawDown": "Rampe ↓", "random": "Zufall", "sh": "S&H", "pump": "Pumpen", "kMin": "Minimum", "kMax": "Maximum", "kPhase": "Phase", "kSmooth": "Glättung", "dice": "Überrasch mich", "write": "Automation schreiben", "clear": "Im Bereich löschen", "undo": "Rückgängig", "written": "{n} Punkte in {p} geschrieben", "cleared": "Automation im Bereich gelöscht", "undone": "Rückgängig gemacht", "measuring": "Parameter wird gemessen…", "writing": "Schreibe…", "failed": "Fehler: {e}", "noParam": "Wähle einen Parameter", "modeRead": "Ich habe die Spur auf „read“-Automation gestellt, damit du sie hörst.", "waiting": "Warte auf LUNA…", "noSession": "Öffne eine Session in LUNA.", "report": "Bericht kopiert", "dark": "Dunkel", "grey": "Grau", "bars": "Takte"},
-    it: {"_name": "Italiano", "target": "Destinazione:", "noTrack": "Seleziona una traccia in LUNA", "modulated": "Modulati", "search": "Cerca parametro…", "mix": "Mixer", "volume": "Volume", "pan": "Panorama", "panStereo": "Panorama (stereo, mantiene l’ampiezza)", "panL": "Pan sinistro", "panR": "Pan destro", "mute": "Mute (alto suona, basso muto)", "sends": "Mandate", "sendN": "Mandata {n}", "span": "Dove", "spanSel": "Selezione / loop", "bars1": "1 battuta", "fromCursor": "(dal cursore)", "shape": "Forma", "rate": "Velocità", "feelN": "Normale", "feelT": "Terzina", "feelD": "Puntato", "sine": "Seno", "triangle": "Triangolo", "square": "Quadra", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Casuale", "sh": "S&H", "pump": "Pompaggio", "kMin": "Minimo", "kMax": "Massimo", "kPhase": "Fase", "kSmooth": "Ammorbidimento", "dice": "Sorprendimi", "write": "Scrivi automazione", "clear": "Cancella nell’intervallo", "undo": "Annulla", "written": "{n} punti scritti su {p}", "cleared": "Automazione cancellata nell’intervallo", "undone": "Annullato", "measuring": "Misuro il parametro…", "writing": "Scrittura…", "failed": "Errore: {e}", "noParam": "Scegli un parametro", "modeRead": "Ho messo la traccia in automazione «read» perché si senta.", "waiting": "In attesa di LUNA…", "noSession": "Apri una sessione in LUNA.", "report": "Rapporto copiato", "dark": "Scuro", "grey": "Grigio", "bars": "battute"},
-    pt: {"_name": "Português", "target": "Destino:", "noTrack": "Seleciona uma faixa no LUNA", "modulated": "Modulados", "search": "Procurar parâmetro…", "mix": "Mistura", "volume": "Volume", "pan": "Panorama", "panStereo": "Panorama (estéreo, mantém a largura)", "panL": "Pan esquerdo", "panR": "Pan direito", "mute": "Mute (em cima toca, em baixo silêncio)", "sends": "Envios", "sendN": "Envio {n}", "span": "Onde", "spanSel": "Seleção / loop", "bars1": "1 compasso", "fromCursor": "(a partir do cursor)", "shape": "Forma", "rate": "Velocidade", "feelN": "Normal", "feelT": "Tercina", "feelD": "Pontuado", "sine": "Seno", "triangle": "Triângulo", "square": "Quadrada", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Aleatória", "sh": "S&H", "pump": "Bombeamento", "kMin": "Mínimo", "kMax": "Máximo", "kPhase": "Fase", "kSmooth": "Suavização", "dice": "Surpreende-me", "write": "Escrever automação", "clear": "Apagar no intervalo", "undo": "Desfazer", "written": "{n} pontos escritos em {p}", "cleared": "Automação apagada no intervalo", "undone": "Desfeito", "measuring": "A medir o parâmetro…", "writing": "A escrever…", "failed": "Erro: {e}", "noParam": "Escolhe um parâmetro", "modeRead": "Pus a faixa em automação «read» para se ouvir.", "waiting": "À espera do LUNA…", "noSession": "Abre uma sessão no LUNA.", "report": "Relatório copiado", "dark": "Escuro", "grey": "Cinzento", "bars": "compassos"},
+    ca: {"instrument": "instrument", "_name": "Català", "target": "Destí:", "noTrack": "Selecciona una pista a LUNA", "modulated": "Modulats", "search": "Cerca un paràmetre…", "mix": "Mescla", "volume": "Volum", "pan": "Panorama", "panStereo": "Panorama (estèreo, manté l’amplada)", "panL": "Pan esquerre", "panR": "Pan dret", "mute": "Mute (dalt sona, baix silenci)", "sends": "Enviaments", "sendN": "Enviament {n}", "span": "On", "spanSel": "Selecció / bucle", "bars1": "1 comp.", "fromCursor": "(des del cursor)", "shape": "Forma", "rate": "Velocitat", "feelN": "Normal", "feelT": "Treset", "feelD": "Amb punt", "sine": "Sinus", "triangle": "Triangle", "square": "Quadrada", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Aleatòria", "sh": "S&H", "pump": "Bombeig", "kMin": "Mínim", "kMax": "Màxim", "kPhase": "Fase", "kSmooth": "Suavitzat", "dice": "Sorprèn-me", "write": "Escriu l’automatització", "clear": "Esborra al rang", "undo": "Desfés", "written": "{n} punts escrits a {p}", "cleared": "Automatització esborrada al rang", "undone": "Desfet", "measuring": "Mesurant el paràmetre…", "writing": "Escrivint…", "failed": "Error: {e}", "noParam": "Tria un paràmetre", "modeRead": "He posat la pista en mode d’automatització «read» perquè soni.", "waiting": "Esperant LUNA…", "noSession": "Obre una sessió a LUNA.", "report": "Informe copiat", "dark": "Fosc", "grey": "Gris", "bars": "comp."},
+    fr: {"instrument": "instrument", "_name": "Français", "target": "Cible :", "noTrack": "Sélectionnez une piste dans LUNA", "modulated": "Modulés", "search": "Rechercher un paramètre…", "mix": "Mixage", "volume": "Volume", "pan": "Panoramique", "panStereo": "Panoramique (stéréo, garde la largeur)", "panL": "Pan gauche", "panR": "Pan droit", "mute": "Mute (haut : joue, bas : coupé)", "sends": "Départs", "sendN": "Départ {n}", "span": "Où", "spanSel": "Sélection / boucle", "bars1": "1 mesure", "fromCursor": "(depuis le curseur)", "shape": "Forme", "rate": "Vitesse", "feelN": "Normal", "feelT": "Triolet", "feelD": "Pointé", "sine": "Sinus", "triangle": "Triangle", "square": "Carré", "sawUp": "Rampe ↑", "sawDown": "Rampe ↓", "random": "Aléatoire", "sh": "S&H", "pump": "Pompage", "kMin": "Minimum", "kMax": "Maximum", "kPhase": "Phase", "kSmooth": "Lissage", "dice": "Surprends-moi", "write": "Écrire l’automation", "clear": "Effacer dans la zone", "undo": "Annuler", "written": "{n} points écrits sur {p}", "cleared": "Automation effacée dans la zone", "undone": "Annulé", "measuring": "Mesure du paramètre…", "writing": "Écriture…", "failed": "Erreur : {e}", "noParam": "Choisissez un paramètre", "modeRead": "J’ai mis la piste en automation « read » pour l’entendre.", "waiting": "En attente de LUNA…", "noSession": "Ouvrez une session dans LUNA.", "report": "Rapport copié", "dark": "Sombre", "grey": "Gris", "bars": "mesures"},
+    de: {"instrument": "Instrument", "_name": "Deutsch", "target": "Ziel:", "noTrack": "Wähle eine Spur in LUNA", "modulated": "Moduliert", "search": "Parameter suchen…", "mix": "Mixer", "volume": "Lautstärke", "pan": "Panorama", "panStereo": "Panorama (Stereo, behält die Breite)", "panL": "Pan links", "panR": "Pan rechts", "mute": "Mute (oben spielt, unten stumm)", "sends": "Sends", "sendN": "Send {n}", "span": "Wo", "spanSel": "Auswahl / Loop", "bars1": "1 Takt", "fromCursor": "(ab dem Cursor)", "shape": "Form", "rate": "Rate", "feelN": "Gerade", "feelT": "Triole", "feelD": "Punktiert", "sine": "Sinus", "triangle": "Dreieck", "square": "Rechteck", "sawUp": "Rampe ↑", "sawDown": "Rampe ↓", "random": "Zufall", "sh": "S&H", "pump": "Pumpen", "kMin": "Minimum", "kMax": "Maximum", "kPhase": "Phase", "kSmooth": "Glättung", "dice": "Überrasch mich", "write": "Automation schreiben", "clear": "Im Bereich löschen", "undo": "Rückgängig", "written": "{n} Punkte in {p} geschrieben", "cleared": "Automation im Bereich gelöscht", "undone": "Rückgängig gemacht", "measuring": "Parameter wird gemessen…", "writing": "Schreibe…", "failed": "Fehler: {e}", "noParam": "Wähle einen Parameter", "modeRead": "Ich habe die Spur auf „read“-Automation gestellt, damit du sie hörst.", "waiting": "Warte auf LUNA…", "noSession": "Öffne eine Session in LUNA.", "report": "Bericht kopiert", "dark": "Dunkel", "grey": "Grau", "bars": "Takte"},
+    it: {"instrument": "strumento", "_name": "Italiano", "target": "Destinazione:", "noTrack": "Seleziona una traccia in LUNA", "modulated": "Modulati", "search": "Cerca parametro…", "mix": "Mixer", "volume": "Volume", "pan": "Panorama", "panStereo": "Panorama (stereo, mantiene l’ampiezza)", "panL": "Pan sinistro", "panR": "Pan destro", "mute": "Mute (alto suona, basso muto)", "sends": "Mandate", "sendN": "Mandata {n}", "span": "Dove", "spanSel": "Selezione / loop", "bars1": "1 battuta", "fromCursor": "(dal cursore)", "shape": "Forma", "rate": "Velocità", "feelN": "Normale", "feelT": "Terzina", "feelD": "Puntato", "sine": "Seno", "triangle": "Triangolo", "square": "Quadra", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Casuale", "sh": "S&H", "pump": "Pompaggio", "kMin": "Minimo", "kMax": "Massimo", "kPhase": "Fase", "kSmooth": "Ammorbidimento", "dice": "Sorprendimi", "write": "Scrivi automazione", "clear": "Cancella nell’intervallo", "undo": "Annulla", "written": "{n} punti scritti su {p}", "cleared": "Automazione cancellata nell’intervallo", "undone": "Annullato", "measuring": "Misuro il parametro…", "writing": "Scrittura…", "failed": "Errore: {e}", "noParam": "Scegli un parametro", "modeRead": "Ho messo la traccia in automazione «read» perché si senta.", "waiting": "In attesa di LUNA…", "noSession": "Apri una sessione in LUNA.", "report": "Rapporto copiato", "dark": "Scuro", "grey": "Grigio", "bars": "battute"},
+    pt: {"instrument": "instrumento", "_name": "Português", "target": "Destino:", "noTrack": "Seleciona uma faixa no LUNA", "modulated": "Modulados", "search": "Procurar parâmetro…", "mix": "Mistura", "volume": "Volume", "pan": "Panorama", "panStereo": "Panorama (estéreo, mantém a largura)", "panL": "Pan esquerdo", "panR": "Pan direito", "mute": "Mute (em cima toca, em baixo silêncio)", "sends": "Envios", "sendN": "Envio {n}", "span": "Onde", "spanSel": "Seleção / loop", "bars1": "1 compasso", "fromCursor": "(a partir do cursor)", "shape": "Forma", "rate": "Velocidade", "feelN": "Normal", "feelT": "Tercina", "feelD": "Pontuado", "sine": "Seno", "triangle": "Triângulo", "square": "Quadrada", "sawUp": "Rampa ↑", "sawDown": "Rampa ↓", "random": "Aleatória", "sh": "S&H", "pump": "Bombeamento", "kMin": "Mínimo", "kMax": "Máximo", "kPhase": "Fase", "kSmooth": "Suavização", "dice": "Surpreende-me", "write": "Escrever automação", "clear": "Apagar no intervalo", "undo": "Desfazer", "written": "{n} pontos escritos em {p}", "cleared": "Automação apagada no intervalo", "undone": "Desfeito", "measuring": "A medir o parâmetro…", "writing": "A escrever…", "failed": "Erro: {e}", "noParam": "Escolhe um parâmetro", "modeRead": "Pus a faixa em automação «read» para se ouvir.", "waiting": "À espera do LUNA…", "noSession": "Abre uma sessão no LUNA.", "report": "Relatório copiado", "dark": "Escuro", "grey": "Cinzento", "bars": "compassos"},
   };
   for (const [c, v] of Object.entries({"es": "Este parámetro va por pasos ({n} posiciones): la curva salta de una a otra", "en": "This parameter has steps ({n} positions): the curve jumps between them", "ca": "Aquest paràmetre va per passos ({n} posicions): la corba salta d’una a l’altra", "fr": "Ce paramètre est à crans ({n} positions) : la courbe saute de l’une à l’autre", "de": "Dieser Parameter hat Stufen ({n} Stellungen): die Kurve springt zwischen ihnen", "it": "Questo parametro va a scatti ({n} posizioni): la curva salta dall’una all’altra", "pt": "Este parâmetro funciona por passos ({n} posições): a curva salta entre elas"})) if (I18N[c]) I18N[c].stepNote = v;
   let lang = store.get('lang') ?? (() => { for (const l of navigator.languages ?? [navigator.language]) { const c = String(l || '').slice(0, 2).toLowerCase(); if (I18N[c]) return c; } return 'en'; })();
@@ -252,15 +252,26 @@
           await out.controls?.load?.().catch(() => undefined);
           const sg = ctl(out, 'gain'); const dest = out.destination?.value?.name ?? ''; if (sg) params.push({ key: `send:${id}`, group: t('sends'), label: `${t('sendN', { n: Number(id.slice(5)) + 1 })}${dest ? ` → ${dest}` : ''}`, control: sg });
         }
-        // Every plug-in on the track: inserts, console and tape.
+        // Every plug-in on the track, in every slot that holds one: the instrument first, then the
+        // MIDI effects, the inserts, and LUNA's console and tape. (loadedEffects lists only the
+        // effect_N inserts, which left instruments out.)
         await tk.effects?.load?.().catch(() => undefined);
-        for (const fx of tk.loadedEffects ?? []) {
+        const order = (id) => (id === 'instrument' ? 0 : /^midi_/.test(id) ? 1 : /^effect_/.test(id) ? 2 : 3) * 1000 + (Number(id.replace(/\D+/g, '')) || 0);
+        const slots = (tk.effects?.items ?? []).filter((f) => !f.isEmpty && /^(instrument|midi_\d+|effect_\d+|console|tape)$/.test(f.insertType?.value ?? ''))
+          .sort((x, y) => order(x.insertType.value ?? '') - order(y.insertType.value ?? ''));
+        const slotInfo = [];
+        for (const fx of slots) {
           await fx.controls.load().catch(() => undefined);
           const slot = fx.insertType.value ?? '';
-          const name = `${fx.pluginName.value || slot}${/^effect_\d+$/.test(slot) ? ` (${Number(slot.slice(7)) + 1})` : ''}`;
-          for (const p of fx.params) if (p.automatable.value !== false) params.push({ key: `fx:${slot}:${p.uid.value ?? p.name.value}`, group: name, label: p.name.value, control: p, step: !!p.discrete.value });
+          const name = `${fx.pluginName.value || slot}${slot === 'instrument' ? ` (${t('instrument')})` : /^effect_\d+$/.test(slot) ? ` (${Number(slot.slice(7)) + 1})` : ''}`;
+          // LUNA lists a plug-in's parameters once it has initialised them; some (seen with a UAD
+          // channel strip on Windows) report none until their window has been opened. Then fall
+          // back to every control that has a name, so the plug-in is never missing from the list.
+          const ready = fx.params, named = (fx.controls?.items ?? []).filter((c) => c.name?.value);
+          slotInfo.push(`${slot}:${fx.pluginName.value}:${ready.length}/${named.length}`);
+          for (const p of (ready.length ? ready : named)) if (p.automatable.value !== false) params.push({ key: `fx:${slot}:${p.uid.value ?? p.name.value}`, group: name, label: p.name.value, control: p, step: !!p.discrete.value });
         }
-        note('params', { track: tk.name.value, n: params.length, effects: (tk.loadedEffects ?? []).map((f) => `${f.insertType.value}:${f.pluginName.value}`) });
+        note('params', { track: tk.name.value, n: params.length, effects: slotInfo });
       }
       const want = store.get('param');
       selectedKey = params.some((p) => p.key === want) ? want : (params[0]?.key ?? '');
@@ -531,8 +542,8 @@
     $('undo').onclick = async () => { if (!lastSteps) return; try { await s.undo(lastSteps); lastSteps = 0; say('undone', {}, 'ok', 3000); } catch (e) { say('failed', { e: errText(e) }, 'bad', 6000); } };
     $('ver').onclick = async (ev) => {
       if (!ev.altKey) return;
-      const text = JSON.stringify({ version: VERSION, track: paramTrack?.name.value, param: current()?.label, span: span(), opts, log }, null, 2);
-      try { await navigator.clipboard.writeText(text); say('report', {}, 'ok', 2500); } catch { /* nothing */ }
+      const text = JSON.stringify({ version: VERSION, window: fitInfo, ua: navigator.userAgent, track: paramTrack?.name.value, param: current()?.label, span: span(), opts, log }, null, 2);
+      try { if (await AddOnCopy(text)) say('report', {}, 'ok', 5000); } catch { /* nothing */ }
     };
     let loadTimer;
     const reload = () => { clearTimeout(loadTimer); loadTimer = setTimeout(() => void loadParams(), 150); };
@@ -549,7 +560,7 @@
     setInterval(async () => {
       if (busy || document.hidden) return;
       const tk = track();
-      if (tk) { await tk.effects?.load?.().catch(() => undefined); for (const f of tk.loadedEffects ?? []) await f.controls?.load?.().catch(() => undefined); }
+      if (tk) { await tk.effects?.load?.().catch(() => undefined); for (const f of (tk.effects?.items ?? []).filter((e) => !e.isEmpty)) await f.controls?.load?.().catch(() => undefined); }
       const sig = signature();
       if (sig !== lastSig) { if (lastSig) tables.clear(); lastSig = sig; reload(); }
     }, 1500);
@@ -560,12 +571,42 @@
     await loadParams();
   }
 
+  // Fit the page to the size LUNA says its window has. On some Windows set-ups LUNA lays the
+  // page out taller than the part of the window you can see (and does not grow it when the window
+  // is stretched), so the bottom bar ended up out of sight. When LUNA's size and the page's
+  // differ, the page takes LUNA's height; when they match (as on a Mac) nothing changes.
+  let me = null, fitInfo = null;
+  async function fitToWindow() {
+    try { me = await luna.gui.thisInstance(); } catch { me = null; }
+    // On Windows LUNA sizes the page to the window's outer size, frame included, so the last
+    // 39 px (title bar + borders) and 16 px on the right fall outside what you can see.
+    // Measured on a customer's screenshot: page 900 x 701, visible 884 x 662.
+    const win = /^Win/i.test(navigator.platform || '');
+    const INSET_W = win ? 16 : 0, INSET_H = win ? 39 : 0;
+    const fit = () => {
+      const h = Number(me?.height?.value) || 0, inner = window.innerHeight, innerW = window.innerWidth;
+      let useH = h > 0 && inner - h > 4 ? Math.min(h, inner) : inner;
+      useH -= INSET_H;
+      const useW = innerW - INSET_W;
+      const fitted = useH < inner || useW < innerW;
+      const st = [document.documentElement.style, document.body.style];
+      for (const s of st) { s.height = fitted ? `${useH}px` : ''; s.width = useW < innerW ? `${useW}px` : ''; }
+      document.documentElement.style.overflow = fitted ? 'auto' : '';
+      fitInfo = { lunaW: Number(me?.width?.value) || null, lunaH: h || null, innerW, innerH: inner, outerW: window.outerWidth, outerH: window.outerHeight, screenX: window.screenX, screenY: window.screenY, vvH: window.visualViewport?.height ?? null, dpr: window.devicePixelRatio, fitted: fitted ? `${useW}x${useH}` : null, platform: navigator.platform };
+    };
+    fit();
+    me?.height?.onChange?.(fit); me?.width?.onChange?.(fit);
+    window.addEventListener('resize', fit);
+    note('fit', fitInfo);
+  }
+
   (async () => {
     for (;;) {
       try { luna = await Luna.connect(); break; }
       catch { say('waiting'); await new Promise((r) => setTimeout(r, 1500)); }
     }
     Luna.bindShortcuts(luna, { onError: () => undefined });
+    void fitToWindow();
     await luna.sessions.ready();
     luna.sessions.focused.onChange(() => void build());
     await build();

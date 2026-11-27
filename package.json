@@ -1,7 +1,7 @@
 {
   "name": "modulators",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "module",
   "description": "Modulators, a LUNA Add On by Fede Trillo",
   "scripts": { "serve": "ua-builder serve", "pack": "ua-builder pack" },

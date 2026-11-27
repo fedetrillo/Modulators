@@ -1,10 +1,8 @@
 # Modulators for LUNA
 
-Tempo-synced LFOs and shapes for LUNA. Pick a parameter of the selected track — volume, pan,
-mute, a send or any parameter of the plug-ins on its inserts — choose a shape, a rate and a
-range, and Modulators writes it as automation over the selection, the loop or a number of bars.
-Tremolo, auto-pan, rhythmic gates, filter sweeps and sidechain-style pumping, as automation you
-can still see and edit.
+Tempo-synced movement for anything in LUNA. Sine, ramp, S&H, pump and more on volume, pan, sends
+or any plug-in or instrument parameter, written as normal automation you can still edit. See the
+curve over your bars before you write it.
 
 <p>
   <img src="docs/screenshot-dark.png" alt="Modulators, dark theme" width="460">
@@ -13,8 +11,8 @@ can still see and edit.
 
 ## Features
 
-- **Any parameter:** volume, pan, mute, sends and every parameter of the plug-ins on the track's
-  inserts. Stereo tracks can move the pan keeping the width, or left and right on their own.
+- **Any parameter:** volume, pan, mute, sends, the track's instrument and every parameter of the
+  plug-ins on its inserts. Stereo tracks can move the pan keeping the width, or left and right on their own.
 - **A list that stays tidy:** plug-ins fold into groups, there is a search box, and the list
   refreshes by itself when you add or remove plug-ins.
 - **See what is already modulated:** parameters with automation stay at the top of the list,
@@ -55,7 +53,8 @@ choose **Add Ons > Windows > Modulators**.
 ## En español
 
 LFOs y formas sincronizados al tempo para LUNA. Elige un parámetro de la pista seleccionada
-(volumen, panorama, mute, envíos o cualquier parámetro de los plugins de sus inserciones), una
+(volumen, panorama, mute, envíos, el instrumento o cualquier parámetro de los plugins de sus
+inserciones), una
 forma, una velocidad y un rango, y Modulators lo escribe como automatización en la selección, el
 bucle o unos compases. Los parámetros ya modulados se ven arriba de la lista, con el color de su
 categoría. Modo oscuro y gris, 7 idiomas.
